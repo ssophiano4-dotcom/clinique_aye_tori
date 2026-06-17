@@ -178,7 +178,7 @@ def suivi_echeance(date_depot, statut: str) -> str:
 
 
 # ══════════════════════════════════════════════════════
-# SCHÉMAS PYDANTIC
+# SCHÉMAS PYDANTIC (compatibles v1)
 # ══════════════════════════════════════════════════════
 
 class LoginSchema(BaseModel):
@@ -193,14 +193,14 @@ class FactureCreateSchema(BaseModel):
     assurance_nom: str
 
 class FactureUpdateSchema(BaseModel):
-    num_facture:          Optional[str]   = None
-    date_facture:         Optional[date]  = None
-    date_depot:           Optional[date]  = None
-    assurance_nom:        Optional[str]   = None
-    montant_total:        Optional[float] = None
-    part_assure:          Optional[float] = None
-    part_assureur_payee:  Optional[float] = None
-    motif_ecart_assurance:Optional[str]   = None
+    num_facture:           Optional[str]   = None
+    date_facture:          Optional[date]  = None
+    date_depot:            Optional[date]  = None
+    assurance_nom:         Optional[str]   = None
+    montant_total:         Optional[float] = None
+    part_assure:           Optional[float] = None
+    part_assureur_payee:   Optional[float] = None
+    motif_ecart_assurance: Optional[str]   = None
 
 class DepenseCreateSchema(BaseModel):
     date_depense:  date
@@ -226,34 +226,34 @@ class ProduitCreateSchema(BaseModel):
 class MouvementSchema(BaseModel):
     date_mouvement: date
     produit_id:     int
-    type_mouvement: str   # "entree" ou "sortie"
+    type_mouvement: str
     quantite:       int
     motif:          Optional[str] = ""
     user_nom:       Optional[str] = ""
 
 class EncaissementSchema(BaseModel):
-    num_facture:   str
-    montant_recu:  float
-    motif:         Optional[str] = ""
+    num_facture:  str
+    montant_recu: float
+    motif:        Optional[str] = ""
 
 class DateDepotSchema(BaseModel):
     num_factures: List[str]
     date_depot:   date
 
 class UtilisateurCreateSchema(BaseModel):
-    nom:         str
-    email:       str
-    mot_de_passe:str
-    role:        str         = "caissier"
-    permissions: List[str]  = []
+    nom:          str
+    email:        str
+    mot_de_passe: str
+    role:         str        = "caissier"
+    permissions:  List[str] = []
 
 class UtilisateurUpdateSchema(BaseModel):
-    nom:         Optional[str]       = None
-    role:        Optional[str]       = None
-    permissions: Optional[List[str]] = None
-    actif:       Optional[int]       = None
-    mot_de_passe:Optional[str]       = None
-
+    nom:          Optional[str]       = None
+    role:         Optional[str]       = None
+    permissions:  Optional[List[str]] = None
+    actif:        Optional[int]       = None
+    mot_de_passe: Optional[str]       = None
+    
 
 # ══════════════════════════════════════════════════════
 # 1. AUTHENTIFICATION
